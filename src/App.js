@@ -7,11 +7,16 @@ import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Modal from "./modal";
 import axios from "axios";
 
 export default class Artist extends React.Component {
   state = {
     artists: [],
+    modal: false,
+  };
+  selectModal = (info) => {
+    this.setState({ modal: !this.state.modal }); // true/false toggle
   };
   componentDidMount() {
     axios.get("http://localhost:3000/artists").then((res) => {
@@ -64,8 +69,8 @@ export default class Artist extends React.Component {
                     />
                     <Card.Body>
                       <Card.Title style={{ textAlign: "center", color: "white" }}>{artist.name}</Card.Title>
-                      <Button variant="danger" style={{ align: "center" }}>
-                        More Info
+                      <Button variant="danger" onClick={this.handleShow} style={{ align: "center" }}>
+                        <Modal displayModal={this.state.modal} closeModal={this.handleClose} More Info />
                       </Button>
                     </Card.Body>
                   </Card>
