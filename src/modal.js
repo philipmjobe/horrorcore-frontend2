@@ -1,35 +1,40 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { Artists } from "./App.js";
 
-function Example() {
-  const [show, setShow] = useState(false);
+class Example extends React.Component {
+  function Artist() {
+  render() {
+    const artists = this.props.artists;
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    return (
+      <>
+        <Button variant="danger" onClick={handleShow}>
+          More Info
+        </Button>
 
-  return (
-    <>
-      <Button variant="danger" onClick={handleShow}>
-        More Info
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>{this.artists.name}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            {/* <Button variant="primary" onClick={handleClose}>
             Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
+          </Button> */}
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
+}
 }
 
 export default Example;

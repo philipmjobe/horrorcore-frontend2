@@ -69,9 +69,8 @@ export default class Artist extends React.Component {
                     />
                     <Card.Body>
                       <Card.Title style={{ textAlign: "center", color: "white" }}>{artist.name}</Card.Title>
-                      <Button variant="danger" onClick={this.handleShow} style={{ align: "center" }}>
-                        <Modal displayModal={this.state.modal} closeModal={this.handleClose} More Info />
-                      </Button>
+
+                      <Modal displayModal={this.state.modal} closeModal={this.handleClose} More Info />
                     </Card.Body>
                   </Card>
                 </Col>
