@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Modal from "./modal";
 import axios from "axios";
+// import { AlphabetList } from "react-alphabet-list";
 
 export default class Artist extends React.Component {
   state = {
@@ -52,31 +53,46 @@ export default class Artist extends React.Component {
             </Navbar.Collapse>
           </Container>
         </Navbar>
+        <AlphabetList
+          data={"artists"}
+          style={{}}
+          genterateFn={
+            <div style={{ backgroundColor: "#BA1313" }}>
+              <Row xs={1} md={3} className="g-4">
+                {this.state.artists
+                  .sort((a, b) => a.name.localeCompare(b.name))
+                  .map((artist) => (
+                    <Col>
+                      <Card
+                        className="text-center"
+                        border="dark"
+                        style={{ width: "27.95rem", backgroundColor: "black" }}
+                      >
+                        <Card.Img
+                          variant="top"
+                          src={artist.image}
+                          alt="artist"
+                          className="image"
+                          style={{ height: 400, width: 445 }}
+                        />
+                        <Card.Body>
+                          <Card.Title style={{ textAlign: "center", color: "white" }}>{artist.name}</Card.Title>
 
-        <div style={{ backgroundColor: "#BA1313" }}>
-          <Row xs={1} md={3} className="g-4">
-            {this.state.artists
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((artist) => (
-                <Col>
-                  <Card className="text-center" border="dark" style={{ width: "27.95rem", backgroundColor: "black" }}>
-                    <Card.Img
-                      variant="top"
-                      src={artist.image}
-                      alt="artist"
-                      className="image"
-                      style={{ height: 400, width: 445 }}
-                    />
-                    <Card.Body>
-                      <Card.Title style={{ textAlign: "center", color: "white" }}>{artist.name}</Card.Title>
-
-                      <Modal artists={artist} displayModal={this.state.modal} closeModal={this.handleClose} More Info />
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-          </Row>
-        </div>
+                          <Modal
+                            artists={artist}
+                            displayModal={this.state.modal}
+                            closeModal={this.handleClose}
+                            More
+                            Info
+                          />
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  ))}
+              </Row>
+            </div>
+          }
+        ></AlphabetList>
       </>
     );
   }
