@@ -70,7 +70,7 @@ export default class Artist extends React.Component {
                     <Card.Body>
                       <Card.Title style={{ textAlign: "center", color: "white" }}>{artist.name}</Card.Title>
 
-                      <Modal displayModal={this.state.modal} closeModal={this.handleClose} More Info />
+                      <Modal artists={artist} displayModal={this.state.modal} closeModal={this.handleClose} More Info />
                     </Card.Body>
                   </Card>
                 </Col>
