@@ -20,7 +20,7 @@ function Example(props) {
         </Modal.Header>
         <Modal.Body>{artists.bio}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="dark" onClick={handleClose}>
             Close
           </Button>
           {/* <Button variant="primary" onClick={handleClose}>
